@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magical Spells for Self Improvement</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #6C5B7B, #C06C84, #F67280);
+            color: #FFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #spell-button, #casting-animation {
+            font-size: 2em;
+            text-align: center;
+            animation: fadeIn 2s linear;
+            cursor: pointer;
+            padding: 20px;
+            border: none;
+            background-color: transparent;
+            border-radius: 10px;
+            outline: none;
+            transition: transform 0.3s;
+        }
+
+        #spell-button:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #casting-animation {
+            font-size: 3em;
+            animation: casting 1.5s infinite;
+        }
+
+        @keyframes casting {
+            0% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0.3;
+            }
+        }
+
+        @keyframes textZoom {
+            0% {
+                transform: scale(0.1);
+                opacity: 0;
+                top: 5%;
+                left: 5%;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+                top: 50%;
+                left: 50%;
+            }
+        }
+
+        #spell {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <button id="spell-button" onclick="castSpell()">Enter and receive the spell</button>
+    <div id="casting-animation" class="hidden">✨ Casting ✨</div>
+    <div id="spell" class="hidden"></div>
+</div>
+
+<script>
+    const spells = [
+        "Awaken Inner Strength: Unleash the power within and face any obstacle.",
+        "Serenity's Embrace: Let peace and calm wash over you in life's turbulent times.",
+        "Destiny's Dance: Move to life's ebb and flow, leading towards your fate.",
+        "Guardian's Gaze: Let protective forces surround and watch over you.",
+        "Whispering Winds of Wisdom: Gain clarity and understanding in moments of confusion.",
+        "Celestial Courage: Harness the valor of the stars in the face of adversity.",
+        "Mystical Momentum: Propel forward with unwavering purpose and resolve.",
+        "Lunar Luminosity: Let the moon's glow light your path in the darkest hours.",
+        "Harmony's Hymn: Bring balance and unity to your inner and outer worlds.",
+        "Fortune's Favor: Attract abundant blessings and prosperity in all endeavors.",
+        "Eternal Echo: Let your positive actions resonate and influence eternity.",
+        "Solar Surge: Channel the sun's energy, invigorating your spirit and purpose.",
+        "Galactic Grace: Navigate life with elegance and poise, as if dancing among the stars."
+    ];
+
+    function castSpell() {
+        const randomIndex = Math.floor(Math.random() * spells.length);
+        document.getElementById('spell').classList.add('hidden');
+        document.getElementById('spell-button').classList.add('hidden');
+        document.getElementById('casting-animation').classList.remove('hidden');
+
+        setTimeout(() => {
+            document.getElementById('casting-animation').classList.add('hidden');
+            document.getElementById('spell').innerText = spells[randomIndex];
+            document.getElementById('spell').style.animation = 'textZoom 2s forwards';
+            document.getElementById('spell').classList.remove('hidden');
+            document.getElementById('spell-button').classList.remove('hidden');
+        }, 3000);  // 3 seconds casting animation
+    }
+</script>
+
+</body>
+
+</html>
